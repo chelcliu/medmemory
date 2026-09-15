@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MedMemory — MCAT Active Learning</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">M</span> MedMemory</div>
+  <nav><a href="#dashboard">Dashboard</a><a href="#library">Learn</a><a href="#practice">Practice</a></nav>
+  <div class="streak">🔥 <span id="streak">4</span> day streak</div>
+</header>
+
+<main>
+<section class="hero" id="dashboard">
+  <div>
+    <p class="eyebrow">MCAT ACTIVE LEARNING</p>
+    <h1>Don't just study it.<br><span>Build it from memory.</span></h1>
+    <p class="hero-copy">Interactive pathways, retrieval challenges, sorting games, and clinical-style questions for the foundational science you actually need to remember.</p>
+    <div class="hero-actions">
+      <a class="primary" href="#library">Start a module →</a>
+      <button class="secondary" onclick="quickReview()">⚡ Quick review</button>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="orbit">🧬</div>
+    <p class="mini-label">TODAY'S MISSION</p>
+    <h3>Master Glycolysis</h3>
+    <p>Reconstruct the pathway, identify enzymes, find regulation points, and calculate the net energy yield.</p>
+    <div class="progress"><span id="heroProgress" style="width:35%"></span></div>
+    <small id="heroProgressText">35% mastered</small>
+  </div>
+</section>
+
+<section class="stats">
+  <div><strong id="modulesDone">0</strong><span>Modules mastered</span></div>
+  <div><strong id="recallScore">0%</strong><span>Recall score</span></div>
+  <div><strong>6</strong><span>Learning modes</span></div>
+  <div><strong id="xp">0</strong><span>XP earned</span></div>
+</section>
+
+<section class="section" id="library">
+  <div class="section-heading">
+    <div><p class="eyebrow">MCAT FOUNDATIONS</p><h2>Choose your battlefield</h2></div>
+    <input id="search" type="search" placeholder="Search glycolysis, DNA..." oninput="filterModules()">
+  </div>
+  <div class="system-tabs" id="tabs"></div>
+  <div id="moduleGrid" class="module-grid"></div>
+</section>
+
+<section id="moduleView" class="module-view hidden">
+  <button class="back" onclick="closeModule()">← Back to modules</button>
+  <div class="module-head">
+    <div><span class="tag" id="moduleTag"></span><h2 id="moduleTitle"></h2><p id="moduleDesc"></p></div>
+    <div class="mastery"><span>Mastery</span><strong id="masteryValue">0%</strong><div class="tiny-progress"><i id="masteryBar"></i></div></div>
+  </div>
+  <div class="mode-grid">
+    <button class="mode-card" onclick="startMode('learn')"><span>🧠</span><b>Learn</b><small>Build the mental map</small></button>
+    <button class="mode-card" onclick="startMode('pathway')"><span>🧩</span><b>Build the Pathway</b><small>Drag concepts into order</small></button>
+    <button class="mode-card" onclick="startMode('sort')"><span>🗂️</span><b>Sort the Facts</b><small>Separate enzymes, products & regulation</small></button>
+    <button class="mode-card" onclick="startMode('recall')"><span>⚡</span><b>Free Recall</b><small>Reconstruct it without clues</small></button>
+    <button class="mode-card" onclick="startMode('quiz')"><span>🎯</span><b>Challenge Questions</b><small>Apply it to MCAT-style prompts</small></button>
+    <button class="mode-card" onclick="startMode('speed')"><span>⏱️</span><b>Speed Round</b><small>Rapid-fire retrieval</small></button>
+  </div>
+</section>
+
+<section id="activity" class="activity hidden">
+  <div class="activity-top"><button class="back" onclick="backToModes()">← Modes</button><span id="activityLabel"></span><span id="activityScore"></span></div>
+  <div id="activityContent"></div>
+</section>
+
+<section id="practice" class="section practice">
+  <p class="eyebrow">ACTIVE RECALL TOOLKIT</p>
+  <h2>Study smarter</h2>
+  <div class="tool-grid">
+    <div><b>🔁 Retrieval first</b><p>Try to reconstruct a pathway before revealing the answer.</p></div>
+    <div><b>🔗 Connect concepts</b><p>Link pathways to energy, regulation, genetics, and physiology.</p></div>
+    <div><b>🧠 Explain it</b><p>Say why an answer is true—not just which option is correct.</p></div>
+    <div><b>📈 Track weakness</b><p>Every challenge updates your mastery score.</p></div>
+  </div>
+</section>
+</main>
+
+<footer><strong>MedMemory</strong> · Independent educational prototype. <span>MCAT content should be verified against your current prep materials and official sources.</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
